@@ -1,0 +1,30 @@
+form {
+    display: none;
+    border: black 1px solid;
+    border-radius: 50px;
+    padding: 2em;
+    background: #e5bdd3;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container div{
+    margin: 5em auto;
+}
+
+.container input, button{
+    margin: 1em 0 0 0;
+    font-size: 1em;
+}
+.container .form2 input, button {
+    margin: 1em 0 1em 0;
+    font-size: 1em;
+}
+.container p.authorization, p.registration{
+    font-size: 2em;
+}
+button {
+    background: #9beca7;
+}
