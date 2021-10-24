@@ -34,7 +34,7 @@ $(document).ready(function() {
         if(confirm_password == '' || password_r != confirm_password){
             error('confirm_password', 'confirm password');
         }
-        if(email == '' || !email.includes('@email')){
+        if(email == '' || !email.includes('@mail')) {
             error('email', 'email');
         }
         if (name.length < 2 || name == '') {

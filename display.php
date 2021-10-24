@@ -48,7 +48,7 @@ class User{
             exit();
         }elseif(!$this->confirm_password || $this->password_r != $this->confirm_password) {
             exit();
-        }elseif(!$this->email || !preg_match('/(@email)/', $this->email)){
+        }elseif(!$this->email || !preg_match('/(@mail)/', $this->email)){
             exit();
         }elseif(!$this->name || iconv_strlen($this->name)<2){
             exit();
