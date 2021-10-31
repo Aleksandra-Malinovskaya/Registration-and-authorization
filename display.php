@@ -28,13 +28,13 @@ class User{
     }
 
     function unique(){
-        if (file_exists('name.json')) {
-            $json = file_get_contents('name.json');
+        if (file_exists('database/name.json')) {
+            $json = file_get_contents('database/name.json');
             $jsonArray = json_decode($json, true);
             foreach ($jsonArray as $key_first => $key_second) {
                 foreach ($key_second as $key => $value) {
                     if (($key == "login_r" && $value == $this->login_r) || ($key == "email" && $value == $this->email)) {
-                        print_r($key);
+                        echo "login or email have already been used";
                         return true;
                     }
                 }
@@ -48,7 +48,7 @@ class User{
             exit();
         }elseif(!$this->confirm_password || $this->password_r != $this->confirm_password) {
             exit();
-        }elseif(!$this->email || !preg_match('/(@mail)/', $this->email)){
+        }elseif(!$this->email || !preg_match('/(mail)/', $this->email)){
             exit();
         }elseif(!$this->name || iconv_strlen($this->name)<2){
             exit();
@@ -71,8 +71,8 @@ $user = new User($_POST['login_r'], $_POST['password_r'], $_POST['confirm_passwo
 
 
         //read file
-        if (file_exists('name.json')) {
-            $json = file_get_contents('name.json');
+        if (file_exists('database/name.json')) {
+            $json = file_get_contents('database/name.json');
             $jsonArray = json_decode($json, true);
         }
 
@@ -82,7 +82,8 @@ $user = new User($_POST['login_r'], $_POST['password_r'], $_POST['confirm_passwo
             $user->password_r = $user->encryption_pas("qazxsw12");
             $user->confirm_password = $user->encryption_confirm_pas("qazxsw12");
             $jsonArray[] = array("login_r" => $user->login_r, 'password_r' => $user->password_r, 'confirm_password' => $user->confirm_password, 'email' => $user->email, 'name' => $user->name);
-            file_put_contents('name.json', json_encode($jsonArray, JSON_FORCE_OBJECT));
+            file_put_contents('database/name.json', json_encode($jsonArray, JSON_FORCE_OBJECT));
+            echo "registration completed successfully";
             header("Location:" . $_SERVER['HTTP_REFERER']);
         }
 

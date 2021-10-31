@@ -36,9 +36,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src="script_auth.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
-<?php
-?>
+

@@ -1,7 +1,5 @@
 <?php
 
-namespace nameee;
-
 if (isset($_SERVER['X-REQUESTED-WITH']) AND $_SERVER['X-REQUESTED-WITH'] !== 'XMLHttpRequest') {
     die('XHR only.');
 }
@@ -18,8 +16,8 @@ class User_auth{
         $this->password_a = $password_a;
     }
     function auth(){
-        if (file_exists('name.json')) {
-            $json = file_get_contents('name.json');
+        if (file_exists('database/name.json')) {
+            $json = file_get_contents('database/name.json');
             $jsonArray = json_decode($json, true);
             foreach ($jsonArray as $key_first => $key_second) {
                 foreach ($key_second as $key => $value) {
@@ -29,7 +27,7 @@ class User_auth{
                         if($key_third["password_r"] == $pass){
                             $name_cook = $key_third["name_r"];
                             setcookie("name", $name_cook, time() + 3600);
-                        header('Location: http://localhost/Project%20php/enter.php');
+                        header('Location: enter.php');
                         exit();
                         }
                         else {
